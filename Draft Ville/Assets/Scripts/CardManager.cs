@@ -9,12 +9,11 @@ public class CardManager : MonoBehaviour
     public static CardManager Instance { get; private set; }
     CardManager(){}
 
-    string json;
+    [SerializeField] private Card[] uniqueCards;
 
-    [SerializeField]
-    private TextAsset jsonFile;
-
-    // Start is called before the first frame update
+    private GameObject[] cardsPlayer1 = new GameObject[30];
+    private GameObject[] cardsPlayer2 = new GameObject[30];
+    
     private void Awake()
     {
         if(_instance != null && _instance != this)
@@ -23,12 +22,12 @@ public class CardManager : MonoBehaviour
         }
         Instance = this;
     }
+
     void Start()
     {
         CreateCards();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -37,6 +36,9 @@ public class CardManager : MonoBehaviour
 
     private void CreateCards()
     {
-        ;
+        for (var i = 0; i < )
+        {
+            
+        }
     }
 }
