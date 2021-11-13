@@ -11,8 +11,6 @@ public class InputManager : MonoBehaviour
 
     private int two = 0;
     bool currentPlayerIsSecond = false;
-    int one = 0;
-    // Start is called before the first frame update
 
     private void Awake()
     {
@@ -23,11 +21,6 @@ public class InputManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        two = 0;
-        one = 0;
-    }
     public void clickCard(int cardDisplay)
     {
         
@@ -42,17 +35,25 @@ public class InputManager : MonoBehaviour
         }
         currentPlayerIsSecond = !currentPlayerIsSecond;
         ins.cardDisplays[cardDisplay - 1].HideCard();
-        if (currentPlayerIsSecond)
+
+        var cardsTaken = 5;
+
+        foreach(UIShowCard card in ins.cardDisplays)
         {
-            two++;
+            if (card.gameObject.activeInHierarchy)
+            {
+                cardsTaken--;
+            }
         }
-        one++;
-        Debug.Log(one);
-        Debug.Log(two);
-        if(one == 5)
+        
+
+
+        Debug.Log(cardsTaken);
+        Debug.Log(ins.cardsPlayer2.Count);
+
+        if(cardsTaken == 5)
         {
-            one = 0;
-            if (two == 30)
+            if (ins.cardsPlayer2.Count == 30)
             {
                 CardManager.Instance.CalculateScore(false);
                 CardManager.Instance.CalculateScore(true);
