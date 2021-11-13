@@ -7,6 +7,8 @@ using UnityEngine;
 public class Card : ScriptableObject
 {
     [SerializeField]
+    private string _id;
+    [SerializeField]
     private CardColor _color;
     [SerializeField]
     private string _name;
@@ -16,10 +18,12 @@ public class Card : ScriptableObject
     private Sprite _artwork;
     [SerializeField]
     private CardScarcity _cardScarcity;
+    [SerializeField]
+    private bool _isCitizen;
     
 
     
-    public int Id { get; private set; }
+    public string Id { get; private set; }
     public CardColor Color { get; private set; }
     //public int NumberOfCards { get; }
     public string Name { get; private set; }
@@ -27,7 +31,7 @@ public class Card : ScriptableObject
     public string Effect { get; private set; }
     public Sprite Artwork { get; private set; }
     public CardScarcity CardScarcity { get; private set; }
-    public Card(int id, CardColor color, string name, string effect, CardScarcity cardScarcity) //, int numberOfCards
+    public Card(string id, CardColor color, string name, string effect, CardScarcity cardScarcity) //, int numberOfCards
     {
         this.Id = id ;
         this.Color = color;
@@ -43,6 +47,8 @@ public class Card : ScriptableObject
         return "Name : " + Name + "\n" + "\nEffect : " + Effect + "\nId : " + Id + "\nColor : " + colorString;
     }
     
-    
-    
+    public int Points()
+    {
+        return 0;
+    }
 }

@@ -18,7 +18,7 @@ public class UIShowCard : MonoBehaviour
     [SerializeField]
     Image cardScarcity;
 
-    private void Start()
+    private void ChangeCard(Card card)
     {
         nameText.text = card.Name;
         effect.text = card.Effect;

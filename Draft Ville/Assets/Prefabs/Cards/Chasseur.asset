@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
-  m_Name: Ferme
+  m_Name: Chasseur
   m_EditorClassIdentifier: 
-  id: 1
-  color: 2
-  name: Ferme
-  effect: +1 par paysan
-  artwork: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  _id: 
+  _color: 0
+  _name: 
+  _effect: 
+  _artwork: {fileID: 0}
+  _cardScarcity: 0
