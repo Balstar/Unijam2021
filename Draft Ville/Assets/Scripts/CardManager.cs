@@ -7,12 +7,14 @@ public class CardManager : MonoBehaviour
 {
     private static CardManager _instance;
     public static CardManager Instance { get; private set; }
-    CardManager(){}
-
-    string json;
 
     [SerializeField]
-    private TextAsset jsonFile;
+    Sprite cultural;
+    [SerializeField]
+    Sprite religious;
+    [SerializeField]
+    Sprite military;
+    CardManager(){}
 
     // Start is called before the first frame update
     private void Awake()
@@ -25,7 +27,7 @@ public class CardManager : MonoBehaviour
     }
     void Start()
     {
-        CreateCards();
+         
     }
 
     // Update is called once per frame

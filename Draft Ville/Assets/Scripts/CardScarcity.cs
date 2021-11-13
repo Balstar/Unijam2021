@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CardColor
+public enum CardScarcity
 {
-   MILITARY,
-   CULTURAL,
-   AGRICOLE
+    COMMON,
+    UNCOMMON,
+    RARE
 }

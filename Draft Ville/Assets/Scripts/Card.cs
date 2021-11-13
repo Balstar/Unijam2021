@@ -6,38 +6,41 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
-    //[SerializeField]
-    //private int _id;
-    //[SerializeField]
-    //private int _color;
-    ////private int _numberOfCards;
-    //[SerializeField]
-    //private string _name;
-    //[SerializeField]
-    //private string _effect;
-    //[SerializeField]
-    //private Sprite _artwork;
+    [SerializeField]
+    private CardColor _color;
+    [SerializeField]
+    private string _name;
+    [SerializeField]
+    private string _effect;
+    [SerializeField]
+    private Sprite _artwork;
+    [SerializeField]
+    private CardScarcity _cardScarcity;
+    
 
     
-    public int id;
-    public int color;
+    public int Id { get; private set; }
+    public CardColor Color { get; private set; }
     //public int NumberOfCards { get; }
-    public new string name;
-    public string effect;
-    public Sprite artwork;
-    public Card(int id, int color, string name, string effect) //, int numberOfCards
+    public string Name { get; private set; }
+    public bool isCitizen { get; private set; }
+    public string Effect { get; private set; }
+    public Sprite Artwork { get; private set; }
+    public CardScarcity CardScarcity { get; private set; }
+    public Card(int id, CardColor color, string name, string effect, CardScarcity cardScarcity) //, int numberOfCards
     {
-        this.id = id ;
-        this.color = color;
+        this.Id = id ;
+        this.Color = color;
         //_numberOfCards = numberOfCards;
-        this.name = name;
-        this.effect = effect;
+        this.Name = name;
+        this.Effect = effect;
+        this.CardScarcity = cardScarcity;
     }
     
     public override string ToString()
     {
-        string colorString = color == 0 ? "Military" : color == 1 ? "Religious" : "Agricole";
-        return "Name : " + name + "\n" + "\nEffect : " + effect + "\nId : " + id + "\nColor : " + color;
+        string colorString = Color == CardColor.MILITARY ? "Military" : Color == CardColor.CULTURAL ? "Religious" : "Agricole";
+        return "Name : " + Name + "\n" + "\nEffect : " + Effect + "\nId : " + Id + "\nColor : " + colorString;
     }
     
     
