@@ -20,8 +20,8 @@ public class CardManager : MonoBehaviour
     private List<string> protoDeck = new List<string>();
     private Queue<string> deck = new Queue<string>();
 
-    public string[] cardsPlayer1 = new string[30];
-    public string[] cardsPlayer2 = new string[30];
+    public List<string> cardsPlayer1 = new List<string>();
+    public List<string> cardsPlayer2 = new List<string>();
 
     private int _scorePlayer1 = 0;
     private int _scorePlayer2 = 0;
@@ -42,8 +42,6 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         //MakeRandomDecks();
-
-
 
         CreateCards();
 
@@ -143,7 +141,7 @@ public class CardManager : MonoBehaviour
 
     public void CalculateScore(bool secondPlayer)
     {
-        string[] deck;
+        List<string> deck;
         if (secondPlayer)
         {
             deck = cardsPlayer2;

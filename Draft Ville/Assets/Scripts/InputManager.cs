@@ -10,9 +10,9 @@ public class InputManager : MonoBehaviour
     InputManager() { }
 
     int currentPlayer;
-    private int turn = 0;
+    private int two = 0;
     bool currentPlayerIsSecond = false;
-    int cardsTaken = 0;
+    int one = 0;
     // Start is called before the first frame update
 
     private void Awake()
@@ -26,32 +26,42 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        turn = 0;
+        two = 0;
+        one = 0;
     }
     public void clickCard(int cardDisplay)
     {
         
         CardManager ins = CardManager.Instance;
-        var an = ins.cardDisplays[cardDisplay - 1].card.Id;
-        
-        ins.cardsPlayer1[turn] = an;
+        if (!currentPlayerIsSecond)
+        {
+            ins.cardsPlayer1.Add(ins.cardDisplays[cardDisplay - 1].card.Id);
+        }
+        else
+        {
+            ins.cardsPlayer2.Add(ins.cardDisplays[cardDisplay - 1].card.Id);
+        }
         currentPlayerIsSecond = !currentPlayerIsSecond;
         ins.cardDisplays[cardDisplay - 1].HideCard();
         if (currentPlayerIsSecond)
         {
-            
-            turn++;
+            two++;
         }
-        cardsTaken++;
-        if(cardsTaken == 5)
+        one++;
+        Debug.Log(one);
+        Debug.Log(two);
+        if(one == 5)
         {
-            cardsTaken = 0;
-            CardManager.Instance.DistributeCards();
-            if(turn == 29)
+            one = 0;
+            if (two == 30)
             {
                 CardManager.Instance.CalculateScore(false);
                 CardManager.Instance.CalculateScore(true);
+
+                Debug.Log(CardManager.Instance.ScorePlayer1);
+                Debug.Log(CardManager.Instance.ScorePlayer2);                
             }
+            CardManager.Instance.DistributeCards();
         }
        
         //UIManager
