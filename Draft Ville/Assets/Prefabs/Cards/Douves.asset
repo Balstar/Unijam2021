@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
   m_Name: Douves
   m_EditorClassIdentifier: 
-  _id: 
+  _id: MC04
   _color: 0
-  _name: 
-  _effect: 
+  _name: Douves
+  _effect: +8 points, -1 pour chaque carte bleue
   _artwork: {fileID: 0}
   _cardScarcity: 0
+  _isCitizen: 0

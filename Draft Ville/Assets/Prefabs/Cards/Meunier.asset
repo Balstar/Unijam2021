@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
   m_Name: Meunier
   m_EditorClassIdentifier: 
-  _id: 
-  _color: 0
-  _name: 
-  _effect: 
+  _id: AU02
+  _color: 2
+  _name: Meunier
+  _effect: +1 pour chaque citoyen
   _artwork: {fileID: 0}
-  _cardScarcity: 0
+  _cardScarcity: 1
+  _isCitizen: 1

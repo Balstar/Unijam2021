@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
   m_Name: "G\xE9n\xE9ral"
   m_EditorClassIdentifier: 
-  _id: 
+  _id: MR01
   _color: 0
-  _name: 
-  _effect: 
+  _name: "G\xE9n\xE9ral"
+  _effect: "+10 points, +3 points pour chaque carte rouge avec un nom diff\xE9rent"
   _artwork: {fileID: 0}
-  _cardScarcity: 0
+  _cardScarcity: 2
+  _isCitizen: 1

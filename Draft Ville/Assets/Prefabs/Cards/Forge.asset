@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
   m_Name: Forge
   m_EditorClassIdentifier: 
-  _id: 
+  _id: MU01
   _color: 0
-  _name: 
-  _effect: 
+  _name: Forge
+  _effect: Toutes vos cartes rouges rapportent +1 point
   _artwork: {fileID: 0}
-  _cardScarcity: 0
+  _cardScarcity: 1
+  _isCitizen: 0

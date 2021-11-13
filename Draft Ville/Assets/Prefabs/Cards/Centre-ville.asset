@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
   m_Name: Centre-ville
   m_EditorClassIdentifier: 
-  _id: 
-  _color: 0
-  _name: 
-  _effect: 
+  _id: CR01
+  _color: 1
+  _name: Centre-ville
+  _effect: " +5 points pour chaque b\xE2timent bleu avec un nom diff\xE9rent"
   _artwork: {fileID: 0}
-  _cardScarcity: 0
+  _cardScarcity: 2
+  _isCitizen: 0

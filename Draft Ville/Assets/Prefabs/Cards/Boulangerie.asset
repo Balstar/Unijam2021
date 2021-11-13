@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
   m_Name: Boulangerie
   m_EditorClassIdentifier: 
-  _id: 
-  _color: 0
-  _name: 
-  _effect: 
+  _id: AR01
+  _color: 2
+  _name: Boulangerie
+  _effect: "+5 points, +15 points pour chaque triplet Champ/Paysan/Moulin poss\xE9d\xE9"
   _artwork: {fileID: 0}
-  _cardScarcity: 0
+  _cardScarcity: 2
+  _isCitizen: 0

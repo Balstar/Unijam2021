@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
   m_Name: Cidrerie
   m_EditorClassIdentifier: 
-  _id: 
-  _color: 0
-  _name: 
-  _effect: 
+  _id: AR02
+  _color: 2
+  _name: Cidrerie
+  _effect: -15 points, +4 points par citoyen
   _artwork: {fileID: 0}
-  _cardScarcity: 0
+  _cardScarcity: 2
+  _isCitizen: 0

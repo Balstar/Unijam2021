@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
   m_Name: Theatre
   m_EditorClassIdentifier: 
-  _id: 
-  _color: 0
-  _name: 
-  _effect: 
+  _id: CR02
+  _color: 1
+  _name: "Th\xE9\xE2tre"
+  _effect: +4 points pour chaque carte de la couleur dont vous disposez le moins
   _artwork: {fileID: 0}
-  _cardScarcity: 0
+  _cardScarcity: 2
+  _isCitizen: 0

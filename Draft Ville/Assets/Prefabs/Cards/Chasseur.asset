@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
   m_Name: Chasseur
   m_EditorClassIdentifier: 
-  _id: 
-  _color: 0
-  _name: 
-  _effect: 
+  _id: AC03
+  _color: 2
+  _name: 'Chasseur '
+  _effect: +2 points, si vous avez au moins 10 citoyens +2 points en plus
   _artwork: {fileID: 0}
   _cardScarcity: 0
+  _isCitizen: 1

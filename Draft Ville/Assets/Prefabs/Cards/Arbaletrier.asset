@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4fe0e78469a0ff498ab08d63809bf1b, type: 3}
-  m_Name: "Arbal\xE9trier"
+  m_Name: Arbaletrier
   m_EditorClassIdentifier: 
-  _id: 
+  _id: MC02
   _color: 0
-  _name: 
-  _effect: 
+  _name: "Arbal\xE9trier"
+  _effect: +3 points
   _artwork: {fileID: 0}
   _cardScarcity: 0
+  _isCitizen: 1
