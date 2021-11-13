@@ -15,13 +15,13 @@ public class CardManager : MonoBehaviour
         "CC01","CC02","CC03","CC04","CU01","CU02","CU03","CR01","CR02"
     };
 
-    [SerializeField] private UIShowCard[] cardDisplays;
+    [SerializeField] public UIShowCard[] cardDisplays;
 
     private List<string> protoDeck = new List<string>();
     private Queue<string> deck = new Queue<string>();
 
-    private string[] cardsPlayer1 = new string[30];
-    private string[] cardsPlayer2 = new string[30];
+    public string[] cardsPlayer1 = new string[30];
+    public string[] cardsPlayer2 = new string[30];
 
 
 
@@ -80,12 +80,14 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void DistributeCards()
+    public void DistributeCards()
     {
         for (var i = 0; i < 5; i++)
         {
             cardDisplays[i].ChangeCard(Converter.Convert(deck.Dequeue()));
+            cardDisplays[i].ShowCard();
         }
+        //InputManager.
 
     }
 }

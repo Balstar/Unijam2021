@@ -7,6 +7,8 @@ public class UIShowCard : MonoBehaviour
 {
     public Card card;
     [SerializeField]
+    GameObject fullCard;
+    [SerializeField]
     Text nameText;
     [SerializeField]
     Text effect;
@@ -22,6 +24,16 @@ public class UIShowCard : MonoBehaviour
         artwork.sprite = card.Artwork;
         int i = ((int)card.Color) * 3 + ((int)card.CardScarcity) ;
         cardScarcityAndColor.sprite = UIManager.Instance.Sprites[i];
+        
+    }
+    public void ShowCard()
+    {
+        fullCard.SetActive(true);
+    }
+
+    public void HideCard()
+    {
+        fullCard.SetActive(false);
     }
 
 }
