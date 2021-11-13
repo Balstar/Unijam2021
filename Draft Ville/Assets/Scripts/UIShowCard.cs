@@ -21,8 +21,8 @@ public class UIShowCard : MonoBehaviour
         effect.text = card.Effect;
         artwork.sprite = card.Artwork;
         int i = ((int)card.Color) * 3 + ((int)card.CardScarcity) ;
-        Debug.Log(i);
-        cardScarcityAndColor.sprite = UIManager.Instance.Sprites[i];
+        //Debug.Log(i);
+        //cardScarcityAndColor.sprite = UIManager.Instance.Sprites[i];
         //background = card.color == CardColor.MILITARY ? 
     }
 

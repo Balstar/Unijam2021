@@ -67,13 +67,13 @@ public class CardManager : MonoBehaviour
             }
         }
 
-        //Debug.Log(protoDeck.Count.ToString());
+        List<string> test = new List<string>();
 
         while (protoDeck.Count != 0)
         {
-            var r = new System.Random();
+            int indexVal = UnityEngine.Random.Range(0,protoDeck.Count);
 
-            int indexVal = r.Next(protoDeck.Count);
+            test.Add(protoDeck[indexVal]);
 
             deck.Enqueue(protoDeck[indexVal]);
             protoDeck.Remove(protoDeck[indexVal]);
