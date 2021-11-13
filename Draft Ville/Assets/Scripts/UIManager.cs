@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     private static UIManager _instance;
-    public static UIManager Instance { get; private set; }
+    public static UIManager Instance { get => _instance; private set {_instance = value; } }
     #region CardColor
     [SerializeField]
-    private List<Sprite> _sprites;
-    public Sprite[] Sprites { get; private set; }
+    private Sprite[] _sprites;
+    public Sprite[] Sprites { get => _sprites; private set { _sprites = value; } }
 
     #endregion
     [SerializeField]

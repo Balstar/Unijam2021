@@ -10,9 +10,9 @@ public class Converter : MonoBehaviour
     private Card[] cards;
     private Dictionary<string, Card> _dictionnary;
     
-    public Dictionary<string, Card> Dictionnary { get; private set; }
+    public Dictionary<string, Card> Dictionnary { get => _dictionnary; private set { _dictionnary = value; } }
     private static Converter _instance;
-    public static Converter Instance { get; private set; }
+    public static Converter Instance { get => _instance; private set { _instance = value; } }
     
     Converter() { }
     private void Awake()
@@ -23,15 +23,14 @@ public class Converter : MonoBehaviour
         }
         Instance = this;
         Dictionnary = new Dictionary<string, Card>();
+        for (int i = 0; i < slots.Length; i++)
+        {
+            Dictionnary.Add(slots[i], cards[i]);
+        }
     }
     
     void Start()
     {
-        for(int i = 0; i < slots.Length; i++)
-        {
-            Dictionnary.Add(slots[i], cards[i]);
-        }
-        
     }
 
     public static Card Convert(string id)

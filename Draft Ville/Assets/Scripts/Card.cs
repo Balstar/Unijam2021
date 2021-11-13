@@ -21,16 +21,14 @@ public class Card : ScriptableObject
     [SerializeField]
     private bool _isCitizen;
     
-
-    
-    public string Id { get; private set; }
-    public CardColor Color { get; private set; }
+    public string Id { get => _id; private set { _id = value; } }
+    public CardColor Color { get => _color; private set { _color = value; ; } }
     //public int NumberOfCards { get; }
-    public string Name { get; private set; }
-    public bool isCitizen { get; private set; }
-    public string Effect { get; private set; }
-    public Sprite Artwork { get; private set; }
-    public CardScarcity CardScarcity { get; private set; }
+    public string Name { get => _name; private set { _name = value; } }
+    public bool isCitizen { get => _isCitizen; private set { _isCitizen = value; ; } }
+    public string Effect { get => _effect; private set { _effect = value; } }
+    public Sprite Artwork { get => _artwork; private set { _artwork = value; } }
+    public CardScarcity CardScarcity { get => _cardScarcity; private set { _cardScarcity = value; } }
     public Card(string id, CardColor color, string name, string effect, CardScarcity cardScarcity) //, int numberOfCards
     {
         this.Id = id ;
@@ -44,7 +42,7 @@ public class Card : ScriptableObject
     public override string ToString()
     {
         string colorString = Color == CardColor.MILITARY ? "Military" : Color == CardColor.CULTURAL ? "Religious" : "Agricole";
-        return "Name : " + Name + "\n" + "\nEffect : " + Effect + "\nId : " + Id + "\nColor : " + colorString;
+        return "Name : " + Name + "\nEffect : " + Effect + "\nId : " + Id + "\nColor : " + colorString; 
     }
     
     public int Points()

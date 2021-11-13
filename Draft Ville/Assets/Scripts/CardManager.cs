@@ -6,7 +6,7 @@ using System;
 public class CardManager : MonoBehaviour
 {
     private static CardManager _instance;
-    public static CardManager Instance { get; private set; }
+    public static CardManager Instance { get => _instance; private set { _instance = value; } }
     CardManager(){}
 
     private string[] uniqueCards = new string[] {
@@ -46,9 +46,7 @@ public class CardManager : MonoBehaviour
         foreach(string id in uniqueCards)
         {
             var multiple = 1;
-
-            //Debug.Log(Converter.Convert(id).Name.ToString());
-
+            
             switch (Converter.Instance.Dictionnary[id].CardScarcity)
             {
                 case CardScarcity.COMMON:
@@ -86,7 +84,8 @@ public class CardManager : MonoBehaviour
     {
         for (var i = 0; i < 5; i++)
         {
-            cardDisplays[i].card = Converter.Convert(deck.Dequeue());
+            cardDisplays[i].ChangeCard(Converter.Convert(deck.Dequeue()));
         }
+
     }
 }
