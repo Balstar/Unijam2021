@@ -277,19 +277,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2648504857454803119}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1037225578162457397, guid: 5df0360b7ac2f8349b0f714d30aa7760, type: 3}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: clickCard
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &3565482486597668313
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8032413195876278124}
   - component: {fileID: 6185781183112474496}
+  - component: {fileID: 1932973426877658598}
   m_Layer: 0
   m_Name: CardPrefab
   m_TagString: Untagged
@@ -340,6 +329,20 @@ MonoBehaviour:
   effect: {fileID: 4688069997580177553}
   artwork: {fileID: 7935201224052752921}
   cardScarcityAndColor: {fileID: 2648504857454803119}
+--- !u!114 &1932973426877658598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565482486597668313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ee7144d1148cb4db0eb3875afef5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 4888740892100892827}
+  number: 0
 --- !u!1 &6456109093030152213
 GameObject:
   m_ObjectHideFlags: 0

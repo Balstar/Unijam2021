@@ -9,7 +9,6 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance { get => _instance; private set { _instance = value; } }
     InputManager() { }
 
-    int currentPlayer;
     private int two = 0;
     bool currentPlayerIsSecond = false;
     int one = 0;
@@ -59,9 +58,14 @@ public class InputManager : MonoBehaviour
                 CardManager.Instance.CalculateScore(true);
 
                 Debug.Log(CardManager.Instance.ScorePlayer1);
-                Debug.Log(CardManager.Instance.ScorePlayer2);                
+                Debug.Log(CardManager.Instance.ScorePlayer2);
+
+                UIManager.Instance.player.text = CardManager.Instance.ScorePlayer1 > CardManager.Instance.ScorePlayer2 ? "Player 1 Wins !" : "Player 2 Wins !";
+                UIManager.Instance.score.text = CardManager.Instance.ScorePlayer1.ToString() + " : " + CardManager.Instance.ScorePlayer2.ToString();
             }
-            CardManager.Instance.DistributeCards();
+            else {
+                CardManager.Instance.DistributeCards();
+            }
         }
        
         //UIManager
