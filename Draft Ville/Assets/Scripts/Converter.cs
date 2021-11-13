@@ -25,17 +25,20 @@ public class Converter : MonoBehaviour
         Dictionnary = new Dictionary<string, Card>();
     }
     
-    // Start is called before the first frame update
     void Start()
     {
         for(int i = 0; i < slots.Length; i++)
         {
-            Dictionnary.Add(slots[0], cards[0]);
+            Dictionnary.Add(slots[i], cards[i]);
         }
         
     }
 
-    // Update is called once per frame
+    public static Card Convert(string id)
+    {
+        return Instance.Dictionnary[id];
+    }
+    
     void Update()
     {
         

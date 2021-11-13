@@ -37,16 +37,19 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         CreateCards();
+
+        DistributeCards();
     }
 
     private void CreateCards()
     {
-        for (var i = 0; i < uniqueCards.Length; i++)
+        foreach(string id in uniqueCards)
         {
             var multiple = 1;
-            var id = uniqueCards[i];
 
-            switch (/*CardConverter.Convert(id).*/CardScarcity.COMMON)
+            //Debug.Log(Converter.Convert(id).Name.ToString());
+
+            switch (Converter.Instance.Dictionnary[id].CardScarcity)
             {
                 case CardScarcity.COMMON:
                     multiple = 3;
@@ -66,6 +69,8 @@ public class CardManager : MonoBehaviour
             }
         }
 
+        //Debug.Log(protoDeck.Count.ToString());
+
         while (protoDeck.Count != 0)
         {
             var r = new System.Random();
@@ -81,7 +86,7 @@ public class CardManager : MonoBehaviour
     {
         for (var i = 0; i < 5; i++)
         {
-            //cardDisplays[i].card = 
+            cardDisplays[i].card = Converter.Convert(deck.Dequeue());
         }
     }
 }
