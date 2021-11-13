@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+
     // Start is called before the first frame update
-    
+    /*Card clickCard(int cardDisplay)
+    {
+        return
+    }*/
 }
