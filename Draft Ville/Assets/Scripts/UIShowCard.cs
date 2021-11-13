@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class UIShowCard : MonoBehaviour
 {
-    [SerializeField]
-    Card card;
+    public Card card;
     [SerializeField]
     Text nameText;
     [SerializeField]
