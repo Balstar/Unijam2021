@@ -16,8 +16,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Text remainingCards;
 
-    public Text player;
+    public Text playerWinner;
     public Text score;
+    public Text cardsRemaining;
+    public Text playerTurn;
     UIManager() { }
 
     // Start is called before the first frame update

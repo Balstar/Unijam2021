@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
 
     private int two = 0;
     bool currentPlayerIsSecond = false;
+    int one = 0;
+    // Start is called before the first frame update
 
     private void Awake()
     {
@@ -21,6 +23,11 @@ public class InputManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        two = 0;
+        one = 0;
+    }
     public void clickCard(int cardDisplay)
     {
         
@@ -35,25 +42,17 @@ public class InputManager : MonoBehaviour
         }
         currentPlayerIsSecond = !currentPlayerIsSecond;
         ins.cardDisplays[cardDisplay - 1].HideCard();
-
-        var cardsTaken = 5;
-
-        foreach(UIShowCard card in ins.cardDisplays)
+        if (currentPlayerIsSecond)
         {
-            if (card.gameObject.activeInHierarchy)
-            {
-                cardsTaken--;
-            }
+            two++;
         }
-        
-
-
-        Debug.Log(cardsTaken);
-        Debug.Log(ins.cardsPlayer2.Count);
-
-        if(cardsTaken == 5)
+        one++;
+        Debug.Log(one);
+        Debug.Log(two);
+        if (one == 5)
         {
-            if (ins.cardsPlayer2.Count == 30)
+            one = 0;
+            if (two == 30)
             {
                 CardManager.Instance.CalculateScore(false);
                 CardManager.Instance.CalculateScore(true);
@@ -61,14 +60,17 @@ public class InputManager : MonoBehaviour
                 Debug.Log(CardManager.Instance.ScorePlayer1);
                 Debug.Log(CardManager.Instance.ScorePlayer2);
 
-                UIManager.Instance.player.text = CardManager.Instance.ScorePlayer1 > CardManager.Instance.ScorePlayer2 ? "Player 1 Wins !" : "Player 2 Wins !";
+                UIManager.Instance.playerWinner.text = CardManager.Instance.ScorePlayer1 > CardManager.Instance.ScorePlayer2 ? "Player 1 Wins !" : "Player 2";
                 UIManager.Instance.score.text = CardManager.Instance.ScorePlayer1.ToString() + " : " + CardManager.Instance.ScorePlayer2.ToString();
+                
             }
             else {
                 CardManager.Instance.DistributeCards();
             }
         }
-       
+        UIManager.Instance.cardsRemaining.text = (60 - two * 2 + (currentPlayerIsSecond ? 1 : 0)).ToString();
+        UIManager.Instance.playerTurn.text = currentPlayerIsSecond ? "2" : "1";
+
         //UIManager
     }
 }
