@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     InputManager() { }
 
     int currentPlayer;
-    int turn = 0;
+    private int turn = 0;
     bool currentPlayerIsSecond = false;
     int cardsTaken = 0;
     // Start is called before the first frame update
@@ -26,16 +26,20 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        
+        turn = 0;
     }
     public void clickCard(int cardDisplay)
     {
+        
         CardManager ins = CardManager.Instance;
-        ins.cardsPlayer1[turn] = ins.cardDisplays[cardDisplay-1].card.Id;
+        var an = ins.cardDisplays[cardDisplay - 1].card.Id;
+        
+        ins.cardsPlayer1[turn] = an;
         currentPlayerIsSecond = !currentPlayerIsSecond;
         ins.cardDisplays[cardDisplay - 1].HideCard();
         if (currentPlayerIsSecond)
         {
+            
             turn++;
         }
         cardsTaken++;
@@ -45,7 +49,8 @@ public class InputManager : MonoBehaviour
             CardManager.Instance.DistributeCards();
             if(turn == 29)
             {
-                //CountPoints();
+                CardManager.Instance.CalculateScore(false);
+                CardManager.Instance.CalculateScore(true);
             }
         }
        
