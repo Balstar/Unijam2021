@@ -14,42 +14,16 @@ public class UIShowCard : MonoBehaviour
     [SerializeField]
     Image artwork;
     [SerializeField]
-    Image background;
-    [SerializeField]
-    Image cardScarcity;
+    Image cardScarcityAndColor;
 
     private void ChangeCard(Card card)
     {
         nameText.text = card.Name;
         effect.text = card.Effect;
         artwork.sprite = card.Artwork;
-        switch (card.Color)
-        {
-            case CardColor.MILITARY:
-                background.sprite = UIManager.Instance.Military;
-                break;
-            case CardColor.CULTURAL:
-                background.sprite = UIManager.Instance.Cultural;
-                break;
-            case CardColor.AGRICOLE:
-                background.sprite = UIManager.Instance.Agricole;
-                break;
-        }
-        switch (card.CardScarcity)
-        {
-            case CardScarcity.COMMON:
-                background.sprite = UIManager.Instance.Common;
-                break;
-            case CardScarcity.UNCOMMON:
-                background.sprite = UIManager.Instance.Uncommon;
-                break;
-            case CardScarcity.RARE:
-                background.sprite = UIManager.Instance.Rare;
-                break;
-        }
-
+        int i = ((int)card.Color) * 3 + ((int)card.CardScarcity) ;
+        cardScarcityAndColor.sprite = UIManager.Instance.Sprites[i];
         //background = card.color == CardColor.MILITARY ? 
-
     }
 
 }
