@@ -9,6 +9,11 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance { get => _instance; private set { _instance = value; } }
     InputManager() { }
 
+    public AudioSource cardClick;
+    public AudioSource cardShuffle;
+    public AudioSource endGame;
+    public AudioSource musicLoop;
+
     private int two = 0;
     bool currentPlayerIsSecond = false;
     int one = 0;
@@ -31,7 +36,8 @@ public class InputManager : MonoBehaviour
 
     public void clickCard(int cardDisplay)
     {
-        
+        //Choix de carte
+        cardClick.Play();
         CardManager ins = CardManager.Instance;
 
         ins.addCard(currentPlayerIsSecond,ins.cardDisplays[cardDisplay - 1].card.Id);
@@ -51,6 +57,9 @@ public class InputManager : MonoBehaviour
             one = 0;
             if (two == 30)
             {
+                //Fin de partie
+                musicLoop.Stop();
+                endGame.Play();
                 CardManager.Instance.CalculateScore(false);
                 CardManager.Instance.CalculateScore(true);
 
@@ -63,6 +72,8 @@ public class InputManager : MonoBehaviour
             }
             else
             {
+                //Destribution de nouvelles cartes
+                cardShuffle.Play();
                 CardManager.Instance.DistributeCards();
             }
         }
