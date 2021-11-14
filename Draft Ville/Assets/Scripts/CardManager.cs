@@ -18,21 +18,95 @@ public class CardManager : MonoBehaviour
     [SerializeField] public UIShowCard[] cardDisplays;
 
     private List<string> protoDeck = new List<string>();
-    private Queue<string> deck = new Queue<string>();
+    private Queue<string> randomisedDeck = new Queue<string>();
 
-    public List<string> cardsPlayer1 = new List<string>();
-    public List<string> cardsPlayer2 = new List<string>();
+    private List<string> cardsPlayer1 = new List<string>();
+    private List<string> cardsPlayer2 = new List<string>();
+
+    public int playerOneCards { get; private set; } = 0;
+    public int playerOneRed { get; private set; } = 0;
+    public int playerOneGreen { get; private set; } = 0;
+    public int playerOneBlue { get; private set; } = 0;
+    public int playerOneCitizen { get; private set; } = 0;
+    public int playerOneBuilding { get; private set; } = 0;
+
+    public int playerTwoCards { get; private set; } = 0;
+    public int playerTwoRed { get; private set; } = 0;
+    public int playerTwoGreen { get; private set; } = 0;
+    public int playerTwoBlue { get; private set; } = 0;
+    public int playerTwoCitizen { get; private set; } = 0;
+    public int playerTwoBuilding { get; private set; } = 0;
 
     private int _scorePlayer1 = 0;
     private int _scorePlayer2 = 0;
     public int ScorePlayer1 { get => _scorePlayer1; private set { _scorePlayer1 = value; } }
     public int ScorePlayer2 { get => _scorePlayer2; private set { _scorePlayer2 = value; } }
 
+    public void addCard(bool playerTwo, string cardId)
+    {
+        var test = Converter.Convert(cardId);
 
+        if (playerTwo)
+        {
+            cardsPlayer2.Add(cardId);
+
+            playerTwoCards++;
+
+            if (test.isCitizen)
+            {
+                playerTwoCitizen++;
+            }
+            else
+            {
+                playerTwoBuilding++;
+            }
+
+            if (test.Color == CardColor.MILITARY)
+            {
+                playerTwoRed++;
+            }
+            else if (test.Color == CardColor.AGRICOLE)
+            {
+                playerTwoGreen++;
+            }
+            else
+            {
+                playerTwoBlue++;
+            }
+        }
+        else
+        {
+            cardsPlayer1.Add(cardId);
+
+            playerOneCards++;
+
+            if (test.isCitizen)
+            {
+                playerOneCitizen++;
+            }
+            else
+            {
+                playerOneBuilding++;
+            }
+
+            if (test.Color == CardColor.MILITARY)
+            {
+                playerOneRed++;
+            }
+            else if (test.Color == CardColor.AGRICOLE)
+            {
+                playerOneGreen++;
+            }
+            else
+            {
+                playerOneBlue++;
+            }
+        }
+    }
 
     private void Awake()
     {
-        if(_instance != null && _instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(this);
         }
@@ -41,8 +115,6 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-        //MakeRandomDecks();
-
         CreateCards();
 
         DistributeCards();
@@ -78,7 +150,7 @@ public class CardManager : MonoBehaviour
         {
             int indexVal = UnityEngine.Random.Range(0,protoDeck.Count);
 
-            deck.Enqueue(protoDeck[indexVal]);
+            randomisedDeck.Enqueue(protoDeck[indexVal]);
             protoDeck.Remove(protoDeck[indexVal]);
         }
     }
@@ -87,7 +159,7 @@ public class CardManager : MonoBehaviour
     {
         for (var i = 0; i < 5; i++)
         {
-            cardDisplays[i].ChangeCard(Converter.Convert(deck.Dequeue()));
+            cardDisplays[i].ChangeCard(Converter.Convert(randomisedDeck.Dequeue()));
             cardDisplays[i].ShowCard();
         }
     }
@@ -142,6 +214,7 @@ public class CardManager : MonoBehaviour
     public void CalculateScore(bool secondPlayer)
     {
         List<string> deck;
+
         if (secondPlayer)
         {
             deck = cardsPlayer2;
@@ -151,6 +224,9 @@ public class CardManager : MonoBehaviour
             deck = cardsPlayer1;
         }
 
+        Debug.Log("Player 1 " + cardsPlayer1.Count);
+        Debug.Log("Player 2 " + cardsPlayer2.Count);
+        
         foreach (string id in deck)
         {
             
@@ -165,21 +241,21 @@ public class CardManager : MonoBehaviour
                     break;
 
                 case "MC03":
-                    ScoreColorType(secondPlayer,0,true,1);
+                    ScoreColorType(secondPlayer, CardColor.MILITARY, true,1);
                     break;
 
                 case "MC04":
                     ScoreDirect(secondPlayer, 12);
-                    ScoreColor(secondPlayer, 2, -1);
+                    ScoreColor(secondPlayer, CardColor.CULTURAL, -1);
                     break;
 
                 case "MU01":
-                    ScoreColor(secondPlayer, 0, 1);
+                    ScoreColor(secondPlayer, CardColor.MILITARY, 1);
                     break;
 
                 case "MU02":
                     ScoreDirect(secondPlayer, 4);
-                    ScoreColorType(secondPlayer, 0, true, 2);
+                    ScoreColorType(secondPlayer, CardColor.MILITARY, true, 2);
                     break;
 
                 case "MU03":
@@ -188,7 +264,7 @@ public class CardManager : MonoBehaviour
 
                 case "MR01":
                     ScoreDirect(secondPlayer, 10);
-                    ScoreUniqueColor(secondPlayer, 0, 4);
+                    ScoreUniqueColor(secondPlayer, CardColor.MILITARY, 4);
                     break;
 
                 case "MR02":
@@ -211,11 +287,11 @@ public class CardManager : MonoBehaviour
 
                 case "AC04":
                     ScoreDirect(secondPlayer, 12);
-                    ScoreColor(secondPlayer, 0, -1);
+                    ScoreColor(secondPlayer, CardColor.MILITARY, -1);
                     break;
 
                 case "AU01":
-                    ScoreColor(secondPlayer, 1, 1);
+                    ScoreColor(secondPlayer, CardColor.AGRICOLE, 1);
                     break;
 
                 case "AU02":
@@ -252,11 +328,11 @@ public class CardManager : MonoBehaviour
 
                 case "CC04":
                     ScoreDirect(secondPlayer, 12);
-                    ScoreColor(secondPlayer, 1, -1);
+                    ScoreColor(secondPlayer, CardColor.AGRICOLE, -1);
                     break;
 
                 case "CU01":
-                    ScoreColor(secondPlayer, 2, 1);
+                    ScoreColor(secondPlayer, CardColor.CULTURAL, 1);
                     break;
 
                 case "CU02":
@@ -264,11 +340,11 @@ public class CardManager : MonoBehaviour
                     break;
 
                 case "CU03":
-                    ScoreColorType(secondPlayer, 2, false, 2);
+                    ScoreColorType(secondPlayer, CardColor.CULTURAL, false, 2);
                     break;
 
                 case "CR01":
-                    ScoreUniqueColorType(secondPlayer, 2, false, 6);
+                    ScoreUniqueColorType(secondPlayer, CardColor.CULTURAL, false, 6);
                     break;
 
                 case "CR02":
@@ -291,22 +367,24 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void ScoreColor(bool secondPlayer, int color, int value)
+    private void ScoreColor(bool secondPlayer, CardColor color, int value)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         foreach (string id in deck)
         {
             var card = Converter.Convert(id);
 
-            if ((int)card.Color == color)
+            if (card.Color == color)
             {
                 ScoreDirect(secondPlayer, value);
             }
@@ -315,35 +393,41 @@ public class CardManager : MonoBehaviour
 
     private void ScoreType(bool secondPlayer, bool isCitizen, int value)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
-
+        Debug.Log("Scoretype");
         foreach (string id in deck)
         {
+            Debug.Log(id);
             var card = Converter.Convert(id);
 
             if (card.isCitizen == isCitizen)
             {
                 ScoreDirect(secondPlayer, value);
             }
+            Debug.Log("ça marche");
         }
     }
 
-    private void ScoreColorType(bool secondPlayer, int color, bool isCitizen, int amount)
+    private void ScoreColorType(bool secondPlayer, CardColor color, bool isCitizen, int amount)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         var deckColor = new List<Card>();
@@ -352,7 +436,7 @@ public class CardManager : MonoBehaviour
         {
             var card = Converter.Convert(id);
 
-            if ((int)card.Color == color)
+            if (card.Color == color)
             {
                 deckColor.Add(card);
             }
@@ -371,15 +455,17 @@ public class CardManager : MonoBehaviour
         ScoreDirect(secondPlayer, value);
     }
 
-    private void ScoreUniqueColorType(bool secondPlayer, int color, bool isCitizen, int value)
+    private void ScoreUniqueColorType(bool secondPlayer, CardColor color, bool isCitizen, int value)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         var deckUnique = new List<string>();
@@ -396,22 +482,24 @@ public class CardManager : MonoBehaviour
         {
             var card = Converter.Convert(id);
 
-            if (((int)card.Color == color) && (card.isCitizen == isCitizen))
+            if ((card.Color == color) && (card.isCitizen == isCitizen))
             {
                 ScoreDirect(secondPlayer, value);
             }
         }
     }
 
-    private void ScoreUniqueColor(bool secondPlayer, int color, int value)
+    private void ScoreUniqueColor(bool secondPlayer, CardColor color, int value)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         var deckUnique = new List<string>();
@@ -428,7 +516,7 @@ public class CardManager : MonoBehaviour
         {
             var card = Converter.Convert(id);
 
-            if ((int)card.Color == color)
+            if (card.Color == color)
             {
                 ScoreDirect(secondPlayer, value);
             }
@@ -437,13 +525,15 @@ public class CardManager : MonoBehaviour
 
     private void ScoreUniqueType(bool secondPlayer, bool isCitizen, int value)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         var deckUnique = new List<string>();
@@ -469,13 +559,15 @@ public class CardManager : MonoBehaviour
 
     private void ScoreLimitType(bool secondPlayer, bool isCitizen, int limit, int value)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         var typeAmount = 0;
@@ -496,13 +588,15 @@ public class CardManager : MonoBehaviour
 
     private void ScoreAmountId(bool secondPlayer, string targetId, int value)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         var idAmount = 0;
@@ -520,17 +614,19 @@ public class CardManager : MonoBehaviour
 
     private int MinCountId(bool secondPlayer, string id1, string id2, string id3)
     {
+        List<string> deck;
+
         var count1 = 0;
         var count2 = 0;
         var count3 = 0;
         
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         foreach(string id in deck)
@@ -556,13 +652,15 @@ public class CardManager : MonoBehaviour
 
     private void ScoreDiversity(bool secondPlayer, int value)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         var red = 0;
@@ -605,13 +703,15 @@ public class CardManager : MonoBehaviour
 
     private void ScoreMinColor(bool secondPlayer, int value)
     {
+        List<string> deck;
+
         if (secondPlayer)
         {
-            var deck = cardsPlayer2;
+            deck = cardsPlayer2;
         }
         else
         {
-            var deck = cardsPlayer1;
+            deck = cardsPlayer1;
         }
 
         var red = 0;
@@ -623,20 +723,28 @@ public class CardManager : MonoBehaviour
         {
             var crd = Converter.Convert(id);
 
-            switch ((int)crd.Color)
+            switch (crd.Color)
             {
-                case 0:
+                case CardColor.MILITARY:
                     red++;
                     break;
-                case 1:
+                case CardColor.AGRICOLE:
                     green++;
                     break;
-                case 2:
+                case CardColor.CULTURAL:
                     blue++;
                     break;
             }
         }
 
         ScoreDirect(secondPlayer, value * Mathf.Min(red, green, blue));
+    }
+
+    private void DebugStringList(List<string> test)
+    {
+        for(var i=0; i < test.Count; i++)
+        {
+            Debug.Log(test[i]);
+        }
     }
 }

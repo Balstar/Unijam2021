@@ -17,12 +17,14 @@ public class UIShowCard : MonoBehaviour
     [SerializeField]
     Image cardScarcityAndColor;
 
-    public void ChangeCard(Card card)
+    public void ChangeCard(Card newCard)
     {
-        nameText.text = card.Name;
-        effect.text = card.Effect;
-        artwork.sprite = card.Artwork;
-        int i = ((int)card.Color) * 3 + ((int)card.CardScarcity) ;
+        card = newCard;
+
+        nameText.text = newCard.Name;
+        effect.text = newCard.Effect;
+        artwork.sprite = newCard.Artwork;
+        int i = ((int)newCard.Color) * 3 + ((int)newCard.CardScarcity) ;
         cardScarcityAndColor.sprite = UIManager.Instance.Sprites[i];
         
     }
