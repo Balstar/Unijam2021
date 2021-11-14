@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: AC03
   _color: 2
-  _name: 'Chasseur '
+  _name: Chasseuse
   _effect: +2 points, si vous avez au moins 10 citoyens +2 points en plus
   _artwork: {fileID: 21300000, guid: e76ec779f380558409f6d4bdbd8d4b1c, type: 3}
   _cardScarcity: 0

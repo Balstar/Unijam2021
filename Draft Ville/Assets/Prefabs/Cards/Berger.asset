@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: AU03
   _color: 2
-  _name: Berger
+  _name: "Berg\xE8re"
   _effect: "+5, +2 points pour chaque Chasseur ou Champ poss\xE9d\xE9"
   _artwork: {fileID: 21300000, guid: a4d078c8c0ceb7944992c5511526125e, type: 3}
   _cardScarcity: 1

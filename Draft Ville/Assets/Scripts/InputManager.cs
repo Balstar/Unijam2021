@@ -66,7 +66,7 @@ public class InputManager : MonoBehaviour
                 Debug.Log(CardManager.Instance.ScorePlayer1);
                 Debug.Log(CardManager.Instance.ScorePlayer2);
 
-                UIManager.Instance.playerWinner.text = CardManager.Instance.ScorePlayer1 > CardManager.Instance.ScorePlayer2 ? "Player 1 Wins !" : "Player 2";
+                UIManager.Instance.playerWinner.text = CardManager.Instance.ScorePlayer1 > CardManager.Instance.ScorePlayer2 ? "Victoire du joueur 1 !" : "Victoire du joueur 2 !";
                 UIManager.Instance.score.text = CardManager.Instance.ScorePlayer1.ToString() + " : " + CardManager.Instance.ScorePlayer2.ToString();
                 
             }
