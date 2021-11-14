@@ -19,12 +19,13 @@ public class UIShowCard : MonoBehaviour
     [SerializeField]
     Image background;
 
-    public void ChangeCard(Card card)
+    public void ChangeCard(Card newCard)
     {
+        card = newCard;
         nameText.text = card.Name;
         effect.text = card.Effect;
         artwork.sprite = card.Artwork;
-        int i = ((int)card.Color) * 3 + ((int)card.CardScarcity);
+        int i = ((int)card.Color) * 3 + ((int)card.CardScarcity) ;
         cardScarcityAndColor.sprite = UIManager.Instance.Sprites[i];
     }
     public void ShowCard()

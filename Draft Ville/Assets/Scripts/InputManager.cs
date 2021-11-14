@@ -28,27 +28,24 @@ public class InputManager : MonoBehaviour
         two = 0;
         one = 0;
     }
+
     public void clickCard(int cardDisplay)
     {
         
         CardManager ins = CardManager.Instance;
-        if (!currentPlayerIsSecond)
-        {
-            ins.cardsPlayer1.Add(ins.cardDisplays[cardDisplay - 1].card.Id);
-        }
-        else
-        {
-            ins.cardsPlayer2.Add(ins.cardDisplays[cardDisplay - 1].card.Id);
-        }
+
+        ins.addCard(currentPlayerIsSecond,ins.cardDisplays[cardDisplay - 1].card.Id);
+
         currentPlayerIsSecond = !currentPlayerIsSecond;
         ins.cardDisplays[cardDisplay - 1].HideCard();
+
         if (currentPlayerIsSecond)
         {
             two++;
         }
+
         one++;
-        Debug.Log(one);
-        Debug.Log(two);
+
         if (one == 5)
         {
             one = 0;
@@ -64,12 +61,17 @@ public class InputManager : MonoBehaviour
                 UIManager.Instance.score.text = CardManager.Instance.ScorePlayer1.ToString() + " : " + CardManager.Instance.ScorePlayer2.ToString();
                 
             }
-            else {
+            else
+            {
                 CardManager.Instance.DistributeCards();
             }
         }
+
         UIManager.Instance.cardsRemaining.text = (60 - two * 2 + (currentPlayerIsSecond ? 1 : 0)).ToString();
         UIManager.Instance.playerTurn.text = currentPlayerIsSecond ? "2" : "1";
+
+        UIManager.Instance.UpdateUI(false, ins.playerOneCards, ins.playerOneRed, ins.playerOneGreen, ins.playerOneBlue, ins.playerOneCitizen, ins.playerOneBuilding);
+        UIManager.Instance.UpdateUI(true, ins.playerTwoCards, ins.playerTwoRed, ins.playerTwoGreen, ins.playerTwoBlue, ins.playerTwoCitizen, ins.playerTwoBuilding);
 
         //UIManager
     }
