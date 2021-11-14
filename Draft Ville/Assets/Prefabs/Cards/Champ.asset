@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 2
   _name: Champ
   _effect: +3 points
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: 1432147fcb70ce94b9766388843157fa, type: 3}
   _cardScarcity: 0
   _isCitizen: 0

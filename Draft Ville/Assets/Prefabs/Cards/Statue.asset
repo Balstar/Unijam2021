@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 1
   _name: Statue
   _effect: +3 points
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: dc06821a6c15a1f47a159e85c178583f, type: 3}
   _cardScarcity: 0
   _isCitizen: 0

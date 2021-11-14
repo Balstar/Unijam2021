@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 2
   _name: Elevage
   _effect: +1 pour chaque carte verte
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: 59cd8fbefb208af4bb6ca5862139d40f, type: 3}
   _cardScarcity: 1
   _isCitizen: 0

@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 0
   _name: "G\xE9n\xE9ral"
   _effect: "+10 points, +3 points pour chaque carte rouge avec un nom diff\xE9rent"
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: 80c06f6ee5dab5f46859caa088f0dfad, type: 3}
   _cardScarcity: 2
   _isCitizen: 1

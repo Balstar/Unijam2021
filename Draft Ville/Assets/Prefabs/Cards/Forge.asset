@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 0
   _name: Forge
   _effect: Toutes vos cartes rouges rapportent +1 point
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: 5c6c2db72a750a345a81348e65c00b6e, type: 3}
   _cardScarcity: 1
   _isCitizen: 0

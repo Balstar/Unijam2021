@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour
     private Sprite[] _sprites;
     public Sprite[] Sprites { get => _sprites; private set { _sprites = value; } }
 
+    [SerializeField]
+    private Sprite[] _backgrounds;
+    public Sprite[] Backgrounds { get => _backgrounds; private set { _backgrounds = value; } }
+
     #endregion
     [SerializeField]
     Text remainingCards;

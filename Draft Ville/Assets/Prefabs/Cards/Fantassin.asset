@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 0
   _name: Fantassin
   _effect: +2 points
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: 08479a4866e293549b3dd58780b87d35, type: 3}
   _cardScarcity: 0
   _isCitizen: 1

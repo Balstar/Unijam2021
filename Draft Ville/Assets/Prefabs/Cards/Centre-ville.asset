@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 1
   _name: Centre-ville
   _effect: " +5 points pour chaque b\xE2timent bleu avec un nom diff\xE9rent"
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: ac039140594f7de489a4cc35c827a216, type: 3}
   _cardScarcity: 2
   _isCitizen: 0

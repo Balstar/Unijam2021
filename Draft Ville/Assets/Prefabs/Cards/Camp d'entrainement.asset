@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 0
   _name: Camp d'entrainement
   _effect: +1 pour chaque citoyen rouge
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: af07ac1661ed4be4cbf3d2c8bb17752f, type: 3}
   _cardScarcity: 0
   _isCitizen: 0

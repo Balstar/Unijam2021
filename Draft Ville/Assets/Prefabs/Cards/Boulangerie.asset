@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 2
   _name: Boulangerie
   _effect: "+5 points, +15 points pour chaque triplet Champ/Paysan/Moulin poss\xE9d\xE9"
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: 701745efebbdb18439bda8e06a842a51, type: 3}
   _cardScarcity: 2
   _isCitizen: 0

@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 1
   _name: "Th\xE9\xE2tre"
   _effect: +4 points pour chaque carte de la couleur dont vous disposez le moins
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: a7ed48a9b15c3fb4b8370a82e7954781, type: 3}
   _cardScarcity: 2
   _isCitizen: 0

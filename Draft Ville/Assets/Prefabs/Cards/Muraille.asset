@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 0
   _name: Muraille
   _effect: "+1 point pour chaque b\xE2timent"
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: 9bdfbe50efba01c4bb938d1351125a7d, type: 3}
   _cardScarcity: 1
   _isCitizen: 0

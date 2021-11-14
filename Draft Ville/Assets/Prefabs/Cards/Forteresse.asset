@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 0
   _name: Forteresse
   _effect: "-20 points, +4 points par b\xE2timent (Forteresse incluse)"
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: 00e3a7f0d2fe2174d8cc7a6939250c99, type: 3}
   _cardScarcity: 2
   _isCitizen: 0

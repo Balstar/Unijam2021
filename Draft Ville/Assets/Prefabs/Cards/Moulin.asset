@@ -16,6 +16,6 @@ MonoBehaviour:
   _color: 2
   _name: Moulin
   _effect: +8 points, -1 point pour chaque carte rouge
-  _artwork: {fileID: 0}
+  _artwork: {fileID: 21300000, guid: a46882eec0fa7484a8e567e51bf88fcd, type: 3}
   _cardScarcity: 0
   _isCitizen: 0
