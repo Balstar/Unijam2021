@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Collections; 
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,9 +24,8 @@ public class UIShowCard : MonoBehaviour
         nameText.text = card.Name;
         effect.text = card.Effect;
         artwork.sprite = card.Artwork;
-        int i = ((int)card.Color);
+        int i = ((int)card.Color) * 3 + ((int)card.CardScarcity);
         cardScarcityAndColor.sprite = UIManager.Instance.Sprites[i];
-        background.sprite = UIManager.Instance.Backgrounds[i];
     }
     public void ShowCard()
     {
